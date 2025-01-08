@@ -12,15 +12,14 @@ export default defineConfig({
   },
   build: {
     sourcemap: true,
+    outDir: 'dist',
     rollupOptions: {
-      onwarn(warning, defaultHandler) {
-        if (warning.code === 'SOURCEMAP_ERROR') {
-          return
-        }
-
-        defaultHandler(warning)
-      },
-    },
-  }
+      output: {
+        manualChunks: {
+          antd: ['antd'],
+        },
+      }
+    }
+  },
 });
 
