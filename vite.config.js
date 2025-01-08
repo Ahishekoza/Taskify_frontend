@@ -12,7 +12,7 @@ export default defineConfig({
   },
   build: {
     outDir: 'dist', // Matches "distDir" in vercel.json
-    sourcemap: false,
+    sourcemap: true,
   },
 });
 
