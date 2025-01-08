@@ -59,16 +59,10 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
     },
   },
-  build: {
-    sourcemap: true,
-    outDir: 'dist',
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          antd: ['antd'],
-        },
-      }
-    }
-  },
+  // build: {
+  //   sourcemap: true,
+  //   outDir: 'dist',
+    
+  // },
 });
 
