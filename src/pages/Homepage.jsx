@@ -48,7 +48,7 @@ const Homepage = () => {
         </span>
       </div>
       <div className=" min-h-[70%] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-2">
-        {isLoadingTask ? (
+         {isLoadingTask ? (
           <div className="h-full flex justify-center items-center col-span-full">
             <ReloadIcon className="w-20 h-20 animate-spin" />
           </div>
