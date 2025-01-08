@@ -22,11 +22,11 @@ const Homepage = () => {
   const { isAuthenticated, loggedInUser_Info, isloading } = useAuth();
   const { tasks, isLoadingTask, pagination_Info, setPagination_Info } = useTasks();
 
-    const handlePageChange = (page) => {
-      setPagination_Info(prev => ({ ...prev, page }));
-    };
+  const handlePageChange = (page) => {
+    setPagination_Info(prev => ({ ...prev, page }));
+  };
 
-  if (isloading || isLoadingTask) {
+  if (isloading) {
     return (
       <div className="h-full flex justify-center items-center">
         <ReloadIcon className="w-20 h-20 animate-spin" />
@@ -48,11 +48,18 @@ const Homepage = () => {
         </span>
       </div>
       <div className=" min-h-[70%] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-2">
-        {tasks.map((task) => (
-          <div key={task?._id}>
-            <TaskCard key={task?._id} task={task} />
+        {isLoadingTask ? (
+          <div className="h-full flex justify-center items-center col-span-full">
+            <ReloadIcon className="w-20 h-20 animate-spin" />
           </div>
-        ))}
+        ) : (
+          // ---if Tasks length is zero show a message for creating your first task
+          tasks.map((task) => (
+            <div key={task?._id}>
+              <TaskCard key={task?._id} task={task} />
+            </div>
+          ))
+        )}
       </div>
       <div className=" flex justify-center items-center">
         <PaginationSelector
