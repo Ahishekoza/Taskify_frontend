@@ -11,8 +11,16 @@ export default defineConfig({
     },
   },
   build: {
-    outDir: 'dist', // Matches "distDir" in vercel.json
     sourcemap: true,
-  },
+    rollupOptions: {
+      onwarn(warning, defaultHandler) {
+        if (warning.code === 'SOURCEMAP_ERROR') {
+          return
+        }
+
+        defaultHandler(warning)
+      },
+    },
+  }
 });
 
