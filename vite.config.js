@@ -53,7 +53,7 @@ const warningsToIgnore = [
 
 export default defineConfig({
   plugins: [react(), muteWarningsPlugin(warningsToIgnore),],
-  base: './',
+  base: '/',
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
